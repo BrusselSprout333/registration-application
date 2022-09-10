@@ -1,0 +1,41 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+h1{
+    text-align: center;
+    margin-top: 20px;
+}
+
+h2{
+    text-align: center;
+    margin-top: 10px;
+}
+
+.main_theme
+{
+    margin: 20px;
+}
+
+#authorization, #registration
+{
+    padding: 5px 10px;
+    background-color: #5bdc5b;
+    border-radius: 10px;
+    border: none;
+}
+#authorization:hover, #registration:hover
+{
+    background-color: #48af48;
+}
+
+label{
+    font-size: 30px;
+}
+
+.errorMess
+{
+    color: red;
+    font-size: 12px;
+}

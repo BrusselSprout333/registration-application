@@ -1,0 +1,23 @@
+[
+  {
+    "name":"daddy",
+    "login":"daddyy",
+    "email":"dad@dd.dd",
+    "password":"fd99923cdb610c4a5f7c367a9765a3ab",
+    "salt":"3b24ff8865425fdb212d07c6bba704e34989abe1"
+  },
+  {
+    "name":"mom",
+    "login":"mommyy",
+    "email":"mom@mom.mom",
+    "password":"e02ca1dd7ac6b23c831d1ad8418cda32",
+    "salt":"82a5feb03901b3bb421ce72bc4f637ddeca8b34c"
+  },
+  {
+    "name":"erevan",
+    "login":"erevan",
+    "email":"er@ev.an",
+    "password":"d3f8dbee3c0825167d1050e0ac3e2d8f",
+    "salt":"9e717fe68692a197bcf1a412f3407237144c0cda"
+  }
+]
