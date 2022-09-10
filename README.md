@@ -1,6 +1,6 @@
 # registration-application
 Web-application for user registration and authorization 
 
-Created using php, js/jquery, html, css.
-Json file as a database.
-Posting form using ajax-request.
+Created using php, js/jquery, html, css. <br>
+Json file as a database. <br>
+Posting form using ajax-request. <br>
