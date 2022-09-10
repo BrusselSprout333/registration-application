@@ -1,0 +1,12 @@
+RewriteEngine On
+RewriteBase /
+
+Order deny,allow
+deny from all
+
+<FilesMatch ".(php)$">
+Order Allow,Deny
+Allow from all
+</FilesMatch>
+
+# для apache
