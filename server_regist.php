@@ -29,8 +29,12 @@ if (@$_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest')
         $json->write();
 
         $user->set_cookie(count($json->data)-1, $json); //куки
-        //  echo "Аккаунт создан";
+        $user->set_session(count($json->data)-1, $json); //сессия
+
+        $response = array('name' => $user->name, 'email' => $user->email,
+            'login' =>$user->login, 'password' => $user->password, 'salt' => $user->salt);
+        echo json_encode($response);
     }
 }
-    else echo "Error! Only ajax requests";
+    else exit("Error! Only ajax requests");
 ?>

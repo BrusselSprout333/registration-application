@@ -39,8 +39,8 @@ class User
                 {
                     if (!isset($_COOKIE['user'])) { // создание куки
                         $this->set_cookie($i, $json);
+                        $this->set_session($i, $json);
                     }
-                    //echo "Вы авторизовались";
                     return true;
                 }
             }
@@ -68,6 +68,11 @@ class User
     {
         setcookie('user', $json->data[$num]['name'], time() + 3600, "/");
         $_COOKIE['user'] = $json->data[$num]['name'];
-        return 0;
+    }
+    function set_session($num, $json)
+    {
+        session_start();
+        $_SESSION['user'] = $json->data[$num]['name'];
+        $_SESSION['auth'] = true;
     }
 }

@@ -11,7 +11,8 @@
 <body>
     <h1>Сайт</h1>
     <?php
-        if(!isset($_COOKIE['user'])): //если уже авторизован
+        session_start();
+        if(!isset($_COOKIE['user']) && !$_SESSION['auth']): //если уже авторизован
     ?>
     <div class="container">
     <div class="row">

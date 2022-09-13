@@ -5,10 +5,14 @@
 </head>
 <body>
 <!-- проверка перехода на другие страницы без повторной авторизации -->
-<h1>Сайт</h1>
-<h2>Контент сайта</h2>
-<div class="main_theme">
+<?php
+session_start();
+if (!empty($_SESSION['auth'])): ?>
+    <h1>Сайт</h1>
+    <h2>Контент сайта</h2>
+    <div class="main_theme">
     <a href="exit.php">Выйти</a>
-    <p>Привет <?=$_COOKIE['user']?></p>
+    <p>Привет <?=$_SESSION['user']?></p>
 </div>
+<?php else: header('Location: index.php'); endif;?>
 </body>

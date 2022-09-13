@@ -18,14 +18,16 @@ if (@$_SERVER['HTTP_X_REQUESTED_WITH'] == 'XMLHttpRequest')
 
     $account_matches = false;
     $account_matches = $user->match($json);   //поиск аккаунта в бд
-
     if(!$account_matches)
     {
         echo "Пользователь не найден";
         exit();
     }
 
+    $response = array('login' =>$user->login, 'password' => $user->password);
+    echo json_encode($response);
+
 }
-else echo "Error! Only ajax requests";
+else exit("Error! Only ajax requests");
 
 ?>
