@@ -18,6 +18,11 @@ $("#registration").on("click", function(){
         return false;
     } else $(".errorMess").text('');
 
+    if(login.indexOf(" ")!==-1){
+        $("#error_login1").text("Не допускается использование пробелов");
+        return false;
+    } else $(".errorMess").text('');
+
     if(password1 === "" || password1.length < 6){
         $("#error_pass1").text("Введите пароль (мин. 6 символов)");
         return false;
@@ -71,13 +76,16 @@ $("#registration").on("click", function(){
             $("#registration").prop("disabled", true);  //сработает до получения ответа: кнопка неактивна
         },
         success: function(data){ //сработает после получения ответа
-            if(!data) {
+            if(data==="Аккаунт с таким логином уже существует"
+                || data==="Аккаунт с таким email уже существует")
+                alert(data);
+            else{
                 $('#authForm').hide();
                 $('#mailForm').hide();
-                $( this ).load( "main.php" );
+                $(this).load("main.php");
             }
-            else alert(data);
             $("#registration").prop("disabled", false);
+            console.log(data);
         }
     });
 });
@@ -85,47 +93,44 @@ $("#registration").on("click", function(){
 
 //////авторизация
 
-$("#authorization").on("click", function(){
+$("#authorization").on("click", async function () {
     let password = $("#password2").val().trim();
     let login = $("#login2").val().trim();
 
     ///проверки
-    if(login === ""){
+    if (login === "") {
         $("#error_login2").text("Введите логин");
         return false;
-    }else $("#error_login2").text('');
+    } else $("#error_login2").text('');
 
-    if(password === ""){
+    if (password === "") {
         $("#error_pass").text("Введите пароль");
         return false;
     } else $("#error_pass").text('');
 
-    ///аякс запрос
+//ajax request
     $.ajax({
         url: 'server_auth.php',
         type: 'POST',
         cache: false,
         data: {
             'login': login,
-            'password': password }, //формат json
+            'password': password
+        },
         dataType: 'html',
-        beforeSend: function(){
+        beforeSend: function () {
             $("#authorization").prop("disabled", true);  //сработает до получения ответа: кнопка неактивна
         },
-        context: $( ".main_theme" ),
-        success: function(data){  //сработает после получения ответа
-            if(!data)
-            {
+        context: $(".main_theme"),
+        success: function (data) {  //сработает после получения ответа
+            if (data === "Пользователь не найден") alert(data);
+            else {
                 $('#authForm').hide();
                 $('#mailForm').hide();
-
-                $( this ).load( "main.php" );
+                $(this).load("main.php");
             }
-            else
-                alert(data);
-
             $("#authorization").prop("disabled", false);
+            console.log(data);
         }
     });
 })
-
